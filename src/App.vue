@@ -1,7 +1,12 @@
 <template>
   <div v-if="loaded" class="flex flex-col w-screen h-screen">
     <div class="flex flex-1">
-      <aside class="flex-shrink-0 bg-gray-200 dark:bg-black w-72"></aside>
+      <!-- navbar -->
+      <aside
+        class="flex-shrink-0 px-3 py-12 bg-gray-200 dark:bg-black dark:text-gray-50 w-72"
+      >
+        <sidebar /> 
+      </aside>
       <div class="relative flex flex-col flex-1">
         <div
           class="absolute z-10 w-full h-16 bg-gray-200 bg-opacity-50 dark:bg-black"
@@ -14,10 +19,12 @@
 </template>
 
 <script lang="ts">
+import Sidebar from './components/Sidebar.vue';
 import { onMounted, ref } from "vue";
 
 export default {
   name: "App",
+  components: {Sidebar},
   setup() {
     const loaded = ref(false);
 
