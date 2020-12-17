@@ -14,17 +14,20 @@
         <main class="flex-1 bg-gray-100 dark:bg-gray-900"></main>
       </div>
     </div>
-    <div class="flex-shrink-0 h-20 bg-gray-50 dark:bg-gray-800"></div>
+    <div class="flex-shrink-0 p-4 bg-gray-50 dark:bg-gray-800">
+      <media-controls />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Sidebar from './components/Sidebar.vue';
 import { onMounted, ref } from "vue";
+import MediaControls from './components/MediaControls.vue';
 
 export default {
   name: "App",
-  components: {Sidebar},
+  components: {Sidebar, MediaControls},
   setup() {
     const loaded = ref(false);
 
