@@ -1,6 +1,11 @@
 <template>
   <nav class="flex flex-col">
-    <a href="flex" class="flex px-5 py-2 font-semibold rounded bg-gray-50 bg-opacity-20">
+    <router-link
+      :to="'/'"
+      class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+      :class="{ 'text-gray-400': !isActive('/'), 'text-gray-50': isActive('/') }"
+      active-class="bg-gray-50 bg-opacity-20 text-gray-50"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="w-6 h-6 mr-4"
@@ -12,11 +17,16 @@
         />
       </svg>
       <span>Home</span>
-    </a>
+    </router-link>
 
-    <a
-      href="flex"
-      class="flex px-5 py-2 font-semibold text-gray-400 transition rounded hover:text-gray-50"
+    <router-link
+      :to="'/search'"
+      class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+      :class="{
+        'text-gray-400': !isActive('/search'),
+        'text-gray-50': isActive('/search'),
+      }"
+      active-class="bg-gray-50 bg-opacity-20 text-gray-50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,10 +43,16 @@
         />
       </svg>
       <span>Search</span>
-    </a>
-    <a
-      href="flex"
-      class="flex px-5 py-2 font-semibold text-gray-400 transition rounded hover:text-gray-50"
+    </router-link>
+
+    <router-link
+      :to="'/library'"
+      class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+      :class="{
+        'text-gray-400': !isActive('/library'),
+        'text-gray-50': isActive('/library'),
+      }"
+      active-class="bg-gray-50 bg-opacity-20 text-gray-50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +69,7 @@
         />
       </svg>
       <span>Your Library</span>
-    </a>
+    </router-link>
 
     <span class="px-5 pt-6 text-sm font-semibold text-gray-400 uppercase">Playlist</span>
 
@@ -113,15 +129,26 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { computed, onMounted, ref } from "vue";
 
 export default {
   name: "Sidebar",
-  setup() {
+  setup(props) {
+    const routes = [
+      { to: "/", label: "Home" },
+      { to: "/search", label: "Search" },
+    ];
+    const router = useRouter();
+    const activeRoute = computed(() => router.currentRoute.value.path);
+    const isActive = (path) => path === activeRoute.value;
+
     const playlists = ref(["Check lins", "Your Top Songs 2020", "Muzyka do pracy"]);
 
     return {
       playlists,
+      isActive,
+      routes,
     };
   },
 };
