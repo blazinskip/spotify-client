@@ -3,10 +3,8 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
-
 export default {
-  name: "SearchPage",
+  name: 'SearchPage',
   setup() {},
 };
 </script>

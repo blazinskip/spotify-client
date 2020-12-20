@@ -3,10 +3,8 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
-
 export default {
-  name: "LibraryPage",
+  name: 'LibraryPage',
   setup() {},
 };
 </script>

@@ -3,7 +3,10 @@
     <router-link
       :to="'/'"
       class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
-      :class="{ 'text-gray-400': !isActive('/'), 'text-gray-50': isActive('/') }"
+      :class="{
+        'text-gray-400': !isActive('/'),
+        'text-gray-50': isActive('/'),
+      }"
       active-class="bg-gray-50 bg-opacity-20 text-gray-50"
     >
       <svg
@@ -71,10 +74,15 @@
       <span>Your Library</span>
     </router-link>
 
-    <span class="px-5 pt-6 text-sm font-semibold text-gray-400 uppercase">Playlist</span>
+    <span class="px-5 pt-6 text-sm font-semibold text-gray-400 uppercase"
+      >Playlist</span
+    >
 
     <div class="flex flex-col pt-4 space-y-2.5">
-      <a class="flex items-center px-5 transition opacity-70 hover:opacity-100" href="">
+      <a
+        class="flex items-center px-5 transition opacity-70 hover:opacity-100"
+        href=""
+      >
         <span class="flex p-1.5 mr-4 text-gray-600 bg-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +102,10 @@
         <span class="text-sm font-semibold text-gray-100">Create playlist</span>
       </a>
 
-      <a href="" class="flex items-center px-5 transition opacity-70 hover:opacity-100">
+      <a
+        href=""
+        class="flex items-center px-5 transition opacity-70 hover:opacity-100"
+      >
         <span class="mr-4 p-1.5 bg-purple-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -129,21 +140,25 @@
 </template>
 
 <script lang="ts">
-import { useRoute, useRouter } from "vue-router";
-import { computed, onMounted, ref } from "vue";
+import { useRouter } from 'vue-router';
+import { computed, ref } from 'vue';
 
 export default {
-  name: "Sidebar",
-  setup(props) {
+  name: 'Sidebar',
+  setup() {
     const routes = [
-      { to: "/", label: "Home" },
-      { to: "/search", label: "Search" },
+      { to: '/', label: 'Home' },
+      { to: '/search', label: 'Search' },
     ];
     const router = useRouter();
     const activeRoute = computed(() => router.currentRoute.value.path);
     const isActive = (path) => path === activeRoute.value;
 
-    const playlists = ref(["Check lins", "Your Top Songs 2020", "Muzyka do pracy"]);
+    const playlists = ref([
+      'Check lins',
+      'Your Top Songs 2020',
+      'Muzyka do pracy',
+    ]);
 
     return {
       playlists,

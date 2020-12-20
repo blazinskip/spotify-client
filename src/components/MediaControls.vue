@@ -20,7 +20,11 @@
     <div class="flex flex-col flex-1 space-y-2">
       <div class="flex items-center justify-center space-x-2">
         <button class="w-4 h-4 text-gray-400 transition hover:text-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"
             />
@@ -28,7 +32,11 @@
         </button>
 
         <button class="w-4 h-4 text-gray-400 transition hover:text-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               fillRule="evenodd"
               d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -38,7 +46,11 @@
         </button>
 
         <button class="w-8 h-8 text-gray-400 transition hover:text-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               fill-rule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
@@ -47,8 +59,14 @@
           </svg>
         </button>
 
-        <button class="w-4 h-4 text-gray-400 transition transform hover:text-gray-100 -scale-x-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <button
+          class="w-4 h-4 text-gray-400 transition transform hover:text-gray-100 -scale-x-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               fillRule="evenodd"
               d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -57,8 +75,14 @@
           </svg>
         </button>
 
-        <button class="w-4 h-4 text-gray-400 transition transform rotate-180 hover:text-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <button
+          class="w-4 h-4 text-gray-400 transition transform rotate-180 hover:text-gray-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
             <path
               d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"
             />
@@ -66,7 +90,9 @@
         </button>
       </div>
 
-      <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
+      <div
+        class="flex items-center space-x-2 text-xs font-semibold text-gray-400"
+      >
         <span class="flex-shrink-0">22:31</span>
         <div class="relative flex-1 w-24 h-1 bg-gray-600 rounded">
           <div
@@ -136,12 +162,16 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
+import { ref } from 'vue';
 
 export default {
-  name: "MediaControls",
+  name: 'MediaControls',
   setup() {
-    const playlists = ref(["Check lins", "Your Top Songs 2020", "Muzyka do pracy"]);
+    const playlists = ref([
+      'Check lins',
+      'Your Top Songs 2020',
+      'Muzyka do pracy',
+    ]);
 
     return {
       playlists,

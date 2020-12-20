@@ -25,12 +25,12 @@
 </template>
 
 <script lang="ts">
-import Sidebar from "./components/Sidebar.vue";
-import { onMounted, ref } from "vue";
-import MediaControls from "./components/MediaControls.vue";
+import { onMounted, ref } from 'vue';
+import Sidebar from './components/Sidebar.vue';
+import MediaControls from './components/MediaControls.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: { Sidebar, MediaControls },
   setup() {
     const loaded = ref(false);
