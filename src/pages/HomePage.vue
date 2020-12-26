@@ -8,16 +8,14 @@
           </router-link>
         </h2>
       </header>
-      <div>
-        <section
-          v-for="playlist in suggestion.playlists"
-          :key="playlist.id"
-          class="grid gap-6"
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-          "
-        >
+      <div
+        class="grid gap-6"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        "
+      >
+        <section v-for="playlist in suggestion.playlists" :key="playlist.id">
           <router-link
             class="relative flex flex-col w-full p-4 bg-black rounded group bg-opacity-20"
             :to="'/playlist/' + playlist.id"
@@ -94,6 +92,13 @@ export default {
               'Rock legends and epic songs that continue to inspire generations.',
             thumbnailUrl:
               'https://i.scdn.co/image/ab67706f00000003519fc8771d90f496501a4da3',
+          },
+          {
+            id: new Date().getTime(),
+            title: 'Christmas Hits',
+            descritpion: 'The biggest Christmas songs of all time.',
+            thumbnailUrl:
+              'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
           },
         ],
       },
