@@ -1,12 +1,18 @@
 <template>
   <div class="grid grid-flow-row gap-8 px-8 py-4">
     <section v-for="suggestion in suggestions" :key="suggestion.id">
-      <header class="mb-4">
+      <header class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold text-gray-50">
           <router-link to="/genre">
             {{ suggestion.name }}
           </router-link>
         </h2>
+
+        <router-link
+          class="text-sm font-semibold text-gray-400 uppercase transition hover:text-gray-50"
+          :to="'/collection/' + suggestion.id"
+          >See all</router-link
+        >
       </header>
       <div
         class="grid gap-6 overflow-y-hidden"
