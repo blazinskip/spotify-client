@@ -9,10 +9,11 @@
         </h2>
       </header>
       <div
-        class="grid gap-6"
+        class="grid gap-6 overflow-y-hidden"
         style="
-          display: grid;
           grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+          grid-auto-rows: 0;
+          grid-template-rows: 1fr;
         "
       >
         <section v-for="playlist in suggestion.playlists" :key="playlist.id">
@@ -80,6 +81,13 @@ interface Suggestion {
 export default {
   name: 'HomePage',
   setup() {
+    Array.from({ length: 10 }, (x, i) => ({
+      id: new Date().getTime(),
+      title: `Hits ${i + 1}`,
+      descritption: `Descriptios ${i + 1}`,
+      thumbnailUrl: '',
+    }));
+
     const suggestions: Suggestion[] = [
       {
         id: new Date().getTime(),
@@ -100,6 +108,13 @@ export default {
             thumbnailUrl:
               'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
           },
+          ...Array.from({ length: 10 }, (x, i) => ({
+            id: new Date().getTime(),
+            title: `Hits ${i + 1}`,
+            descritpion: `Descriptions ${i + 1}`,
+            thumbnailUrl:
+              'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
+          })),
         ],
       },
       {
@@ -113,6 +128,15 @@ export default {
             thumbnailUrl:
               'https://i.scdn.co/image/ab67706f000000032cdb0982697cc0ae43b1b5b6',
           },
+          ...Array.from({ length: 10 }, (x, i) => ({
+            id: new Date().getTime(),
+            title: `00s Rock Anthem ${i + 1}`,
+            descritpion: `Thesee songs rocked the 00s. Cover: Linkin Park ${
+              i + 1
+            }`,
+            thumbnailUrl:
+              'https://i.scdn.co/image/ab67706f000000032cdb0982697cc0ae43b1b5b6',
+          })),
         ],
       },
     ];
