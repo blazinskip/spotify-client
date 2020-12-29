@@ -10,7 +10,7 @@
 
         <router-link
           class="text-sm font-semibold text-gray-400 uppercase transition hover:text-gray-50"
-          :to="'/collection/' + suggestion.id"
+          :to="'/genre/' + suggestion.id"
           >See all</router-link
         >
       </header>
