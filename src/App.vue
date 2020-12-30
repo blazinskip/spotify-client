@@ -3,7 +3,8 @@
     <div class="flex flex-1">
       <!-- navbar -->
       <aside
-        class="flex-shrink-0 w-64 px-3 py-6 bg-gray-200 dark:bg-black dark:text-gray-50"
+        style="width: 232px"
+        class="flex-shrink-0 pt-6 bg-gray-200 dark:bg-black dark:text-gray-50"
       >
         <sidebar />
       </aside>
