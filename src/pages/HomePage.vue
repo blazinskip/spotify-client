@@ -1,16 +1,16 @@
 <template>
   <div class="grid grid-flow-row gap-8 px-8 py-4">
-    <section v-for="suggestion in suggestions" :key="suggestion.id">
+    <section v-for="genre in genres" :key="genre.id">
       <header class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold text-gray-50">
           <router-link to="/genre">
-            {{ suggestion.name }}
+            {{ genre.name }}
           </router-link>
         </h2>
 
         <router-link
           class="text-sm font-semibold text-gray-400 uppercase transition hover:text-gray-50"
-          :to="'/genre/' + suggestion.id"
+          :to="'/genre/' + genre.id"
           >See all</router-link
         >
       </header>
@@ -22,7 +22,7 @@
           grid-template-rows: 1fr;
         "
       >
-        <section v-for="playlist in suggestion.playlists" :key="playlist.id">
+        <section v-for="playlist in genre.playlists" :key="playlist.id">
           <router-link
             class="relative flex flex-col w-full p-4 bg-black rounded group bg-opacity-20"
             :to="'/playlist/' + playlist.id"
@@ -71,84 +71,13 @@
 </template>
 
 <script lang="ts">
-interface Playlist {
-  id: number;
-  title: string;
-  descritpion: string;
-  thumbnailUrl: string;
-}
-
-interface Suggestion {
-  id: number;
-  name: string;
-  playlists: Playlist[];
-}
+import { genres } from '../data';
 
 export default {
   name: 'HomePage',
   setup() {
-    Array.from({ length: 10 }, (x, i) => ({
-      id: new Date().getTime(),
-      title: `Hits ${i + 1}`,
-      descritption: `Descriptios ${i + 1}`,
-      thumbnailUrl: '',
-    }));
-
-    const suggestions: Suggestion[] = [
-      {
-        id: new Date().getTime(),
-        name: 'Shortcuts',
-        playlists: [
-          {
-            id: new Date().getTime(),
-            title: 'Rock Classic',
-            descritpion:
-              'Rock legends and epic songs that continue to inspire generations.',
-            thumbnailUrl:
-              'https://i.scdn.co/image/ab67706f00000003519fc8771d90f496501a4da3',
-          },
-          {
-            id: new Date().getTime(),
-            title: 'Christmas Hits',
-            descritpion: 'The biggest Christmas songs of all time.',
-            thumbnailUrl:
-              'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
-          },
-          ...Array.from({ length: 10 }, (x, i) => ({
-            id: new Date().getTime(),
-            title: `Hits ${i + 1}`,
-            descritpion: `Descriptions ${i + 1}`,
-            thumbnailUrl:
-              'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
-          })),
-        ],
-      },
-      {
-        id: new Date().getTime(),
-        name: 'Recently Played',
-        playlists: [
-          {
-            id: new Date().getTime(),
-            title: '00s Rock Anthems',
-            descritpion: 'Thesee songs rocked the 00s. Cover: Linkin Park',
-            thumbnailUrl:
-              'https://i.scdn.co/image/ab67706f000000032cdb0982697cc0ae43b1b5b6',
-          },
-          ...Array.from({ length: 10 }, (x, i) => ({
-            id: new Date().getTime(),
-            title: `00s Rock Anthem ${i + 1}`,
-            descritpion: `Thesee songs rocked the 00s. Cover: Linkin Park ${
-              i + 1
-            }`,
-            thumbnailUrl:
-              'https://i.scdn.co/image/ab67706f000000032cdb0982697cc0ae43b1b5b6',
-          })),
-        ],
-      },
-    ];
-
     return {
-      suggestions,
+      genres,
     };
   },
 };
