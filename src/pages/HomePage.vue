@@ -15,7 +15,7 @@
         >
       </header>
       <div
-        class="grid gap-6 overflow-y-hidden"
+        class="grid overflow-y-hidden gap-x-6"
         style="
           grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
           grid-auto-rows: 0;

@@ -9,7 +9,7 @@
       class="grid gap-6"
       style="
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        grid-template-rows: 1fr;
+        grid-template-rows: 100%;
       "
     >
       <playlist-card
