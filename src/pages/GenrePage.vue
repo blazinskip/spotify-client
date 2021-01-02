@@ -1,5 +1,5 @@
 <template>
-  <section class="grid h-full grid-flow-row gap-8 px-8 py-4">
+  <section class="flex flex-col px-8 py-4">
     <header class="flex items-center justify-between mb-4">
       <h2 class="text-2xl font-bold text-gray-50">
         {{ suggestion.name }}
