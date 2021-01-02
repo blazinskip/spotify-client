@@ -4,12 +4,6 @@
       <h2 class="text-2xl font-bold text-gray-50">
         {{ suggestion.name }}
       </h2>
-
-      <router-link
-        class="text-sm font-semibold text-gray-400 uppercase transition hover:text-gray-50"
-        :to="'/genre/' + suggestion.id"
-        >See all</router-link
-      >
     </header>
     <div
       class="grid gap-6"
