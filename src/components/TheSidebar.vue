@@ -164,10 +164,10 @@
 
 <script lang="ts">
 import { useRouter } from 'vue-router';
-import { computed, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 
-export default {
-  name: 'Sidebar',
+export default defineComponent({
+  name: 'TheSidebar',
   setup() {
     const routes = [
       { to: '/', label: 'Home' },
@@ -189,5 +189,5 @@ export default {
       routes,
     };
   },
-};
+});
 </script>
