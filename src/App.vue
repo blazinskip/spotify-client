@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="flex-shrink-0 p-4 bg-gray-50 dark:bg-gray-800">
-      <media-controls />
+      <the-media-controls />
     </div>
   </div>
 </template>
@@ -26,12 +26,12 @@
 <script lang="ts">
 import { onMounted, ref } from 'vue';
 import Sidebar from './components/Sidebar.vue';
-import MediaControls from './components/MediaControls.vue';
 import TheTopBar from './components/TheTopBar.vue';
+import TheMediaControls from './components/TheMediaControls.vue';
 
 export default {
   name: 'App',
-  components: { Sidebar, MediaControls, TheTopBar },
+  components: { Sidebar, TheTopBar, TheMediaControls },
   setup() {
     const loaded = ref(false);
 

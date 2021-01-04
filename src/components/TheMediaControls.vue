@@ -162,10 +162,10 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 
-export default {
-  name: 'MediaControls',
+export default defineComponent({
+  name: 'TheMediaControls',
   setup() {
     const playlists = ref([
       'Check lins',
@@ -177,5 +177,5 @@ export default {
       playlists,
     };
   },
-};
+});
 </script>
