@@ -10,9 +10,7 @@
       </aside>
       <div class="flex flex-col flex-1">
         <main class="flex flex-col flex-1 h-0 bg-gray-100 dark:bg-gray-900">
-          <div
-            class="sticky top-0 z-10 flex-shrink-0 w-full h-16 bg-gray-200 bg-opacity-50 dark:bg-black"
-          ></div>
+          <the-top-bar />
           <div class="overflow-auto">
             <router-view></router-view>
           </div>
@@ -29,10 +27,11 @@
 import { onMounted, ref } from 'vue';
 import Sidebar from './components/Sidebar.vue';
 import MediaControls from './components/MediaControls.vue';
+import TheTopBar from './components/TheTopBar.vue';
 
 export default {
   name: 'App',
-  components: { Sidebar, MediaControls },
+  components: { Sidebar, MediaControls, TheTopBar },
   setup() {
     const loaded = ref(false);
 
