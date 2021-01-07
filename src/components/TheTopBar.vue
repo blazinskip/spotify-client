@@ -22,7 +22,7 @@
           </svg>
         </button>
         <button
-          class="w-8 h-8 p-1 text-gray-400 bg-black rounded-full cursor-not-allowed bg-opacity-40"
+          class="w-8 h-8 p-1 bg-black rounded-full cursor-not-allowed text-gray-50"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
