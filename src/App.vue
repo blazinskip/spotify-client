@@ -1,38 +1,25 @@
 <template>
-  <div v-if="loaded" class="flex flex-col w-full h-screen">
-    <div class="flex flex-1">
-      <aside
-        style="width: 232px"
-        class="flex-shrink-0 pt-6 bg-gray-200 dark:bg-black dark:text-gray-50"
-      >
-        <the-sidebar />
-      </aside>
-      <div class="flex flex-col flex-1">
-        <main class="flex flex-col flex-1 h-0 bg-gray-100 dark:bg-gray-900">
-          <the-top-bar />
-          <div class="overflow-auto">
-            <router-view></router-view>
-          </div>
-        </main>
-      </div>
-    </div>
-    <div class="flex-shrink-0 p-4 bg-gray-50 dark:bg-gray-800">
-      <the-media-controls />
-    </div>
+  <div v-if="loaded">
+    <the-authenticated v-if="state.authenticated" />
+    <the-log-in v-if="!state.authenticated" />
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from 'vue';
-import TheTopBar from './components/TheTopBar.vue';
-import TheMediaControls from './components/TheMediaControls.vue';
-import TheSidebar from './components/TheSidebar.vue';
+import { defineComponent, onMounted, ref } from 'vue';
+import useState from './use/use-state';
+import TheLogIn from './components/TheLogIn.vue';
+import TheAuthenticated from './components/TheAuthenticated.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
-  components: { TheSidebar, TheTopBar, TheMediaControls },
+  components: {
+    TheLogIn,
+    TheAuthenticated,
+  },
   setup() {
     const loaded = ref(false);
+    const { state } = useState();
 
     onMounted(() => {
       loaded.value = true;
@@ -40,7 +27,30 @@ export default {
 
     return {
       loaded,
+      state,
     };
   },
-};
+});
 </script>
+
+<style scoped>
+.background {
+  background: url(https://images.unsplash.com/photo-1511719218143-933ef7b27efa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=100)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.background:before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(20px); /* apply the blur */
+  pointer-events: none; /* make the pseudo class click-through */
+  filter: brightness(50%);
+}
+</style>

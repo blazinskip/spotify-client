@@ -8,6 +8,7 @@ module.exports = {
     colors: {
       ...theme.colors,
       gray: colors.trueGray,
+      green: colors.green,
     },
     extend: {
       height: {
