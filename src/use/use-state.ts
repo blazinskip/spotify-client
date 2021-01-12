@@ -7,7 +7,17 @@ export default () => {
     authenticated: false,
   });
 
+  function authenticate(token: string): void {
+    state.value = {
+      ...state.value,
+      token,
+      authenticated: true,
+    };
+  }
+
+  // TODO: Refactor returns only value not modification
   return {
     state,
+    authenticate,
   };
 };

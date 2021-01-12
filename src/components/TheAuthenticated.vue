@@ -23,7 +23,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import useState from '../use/use-state';
 import TheMediaControls from './TheMediaControls.vue';
 import TheSidebar from './TheSidebar.vue';
 import TheTopBar from './TheTopBar.vue';
@@ -32,6 +34,14 @@ export default defineComponent({
   components: { TheSidebar, TheTopBar, TheMediaControls },
   name: 'TheAuthenticated',
   setup() {
+    const router = useRouter();
+    const { state } = useState();
+    onMounted(() => {
+      if (!state.value.authenticated) {
+        router.push({ path: '/log-in' });
+      }
+    });
+
     return {};
   },
 });

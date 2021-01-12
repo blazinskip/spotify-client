@@ -10,11 +10,13 @@
           <h2>Listen your music</h2>
         </header>
         <section class="pt-8">
-          <button
-            class="w-full px-8 py-4 font-bold uppercase transition bg-green-600 rounded-full hover:bg-green-500"
-          >
-            Log In
-          </button>
+          <a :href="href">
+            <button
+              class="w-full px-8 py-4 font-bold uppercase transition bg-green-600 rounded-full hover:bg-green-500"
+            >
+              Log In
+            </button>
+          </a>
         </section>
       </section>
     </div>
@@ -24,7 +26,31 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+const clientId = 'f67aadc0bde24f30b2276b9d08f3665b';
+const redirectUri = 'http://localhost:3000/successful-login/';
+const scopes = [
+  'playlist-read-private',
+  'streaming',
+  'user-read-email',
+  'user-read-private',
+  'user-read-currently-playing',
+  'user-read-playback-state',
+  'user-read-recently-played',
+  'user-modify-playback-state',
+];
+
+const href = `${
+  'https://accounts.spotify.com/authorize' +
+  '?response_type=token' +
+  '&client_id='
+}${clientId}${
+  scopes ? `&scope=${encodeURIComponent(scopes.join(' '))}` : ''
+}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+
 export default defineComponent({
   name: 'TheLogIn',
+  setup() {
+    return { href };
+  },
 });
 </script>
