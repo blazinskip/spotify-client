@@ -27,7 +27,7 @@
 import { defineComponent } from 'vue';
 
 const clientId = 'f67aadc0bde24f30b2276b9d08f3665b';
-const redirectUri = 'http://localhost:3000/successful-login/';
+const redirectUri = 'http://localhost:3000/login-success/';
 const scopes = [
   'playlist-read-private',
   'streaming',
@@ -40,15 +40,15 @@ const scopes = [
 ];
 
 const href = `${
-  'https://accounts.spotify.com/authorize' +
-  '?response_type=token' +
-  '&client_id='
+  'https://accounts.spotify.com/authorize'
+  + '?response_type=token'
+  + '&client_id='
 }${clientId}${
   scopes ? `&scope=${encodeURIComponent(scopes.join(' '))}` : ''
 }&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
 export default defineComponent({
-  name: 'TheLogIn',
+  name: 'LoginPage',
   setup() {
     return { href };
   },

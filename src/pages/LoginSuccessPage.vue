@@ -8,7 +8,7 @@ import { useRoute, useRouter } from 'vue-router';
 import useState from '../use/use-state';
 
 export default defineComponent({
-  name: 'SuccessfulLoginPage',
+  name: 'LoginSuccessPage',
   setup() {
     const router = useRouter();
     const route = useRoute();

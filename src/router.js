@@ -7,14 +7,14 @@ import HomePage from './pages/HomePage.vue';
 import SearchPage from './pages/SearchPage.vue';
 import LibraryPage from './pages/LibraryPage.vue';
 import GenrePage from './pages/GenrePage.vue';
-import TheLogIn from './components/TheLogIn.vue';
-import TheAuthenticated from './components/TheAuthenticated.vue';
-import SuccessfulLoginPage from './pages/SuccessfulLoginPage.vue';
+import LoginPage from './pages/LoginPage.vue';
+import AuthenticatedPage from './pages/AuthenticatedPage.vue';
+import LoginSuccessPage from './pages/LoginSuccessPage.vue';
 
 const routes = [
   {
     path: '/',
-    component: TheAuthenticated,
+    component: AuthenticatedPage,
     children: [
       { path: '/', component: HomePage },
       { path: '/search', component: SearchPage },
@@ -22,8 +22,8 @@ const routes = [
       { path: '/genre/:genreName', component: GenrePage },
     ],
   },
-  { path: '/log-in', component: TheLogIn },
-  { path: '/successful-login', component: SuccessfulLoginPage },
+  { path: '/login', component: LoginPage },
+  { path: '/login-success', component: LoginSuccessPage },
 ];
 
 const router = createRouter({
