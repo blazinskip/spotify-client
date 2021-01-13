@@ -39,11 +39,7 @@ const scopes = [
   'user-modify-playback-state',
 ];
 
-const href = `${
-  'https://accounts.spotify.com/authorize'
-  + '?response_type=token'
-  + '&client_id='
-}${clientId}${
+const href = `${'https://accounts.spotify.com/authorize?response_type=token&client_id='}${clientId}${
   scopes ? `&scope=${encodeURIComponent(scopes.join(' '))}` : ''
 }&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
