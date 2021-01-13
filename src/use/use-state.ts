@@ -25,11 +25,8 @@ function authenticate({ token, type, expiresIn }: TokenInfo): void {
   };
 }
 
-export default () =>
-  // TODO: Refactor returns only value not modification
-  // eslint-disable-next-line implicit-arrow-linebreak
-  ({
-    state,
-    token: tokenString,
-    authenticate,
-  });
+export default () => ({
+  state: state.value,
+  token: tokenString,
+  authenticate,
+});

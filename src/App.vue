@@ -12,6 +12,7 @@ export default defineComponent({
   setup() {
     const loaded = ref(false);
     onMounted(() => {
+      localStorage.setItem('theme', 'dark'); // Used right now
       loaded.value = true;
     });
 

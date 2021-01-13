@@ -37,7 +37,7 @@ export default defineComponent({
     const router = useRouter();
     const { state } = useState();
     onMounted(() => {
-      if (!state.value.authenticated) {
+      if (!state.authenticated) {
         router.push({ path: '/login' });
       }
     });
