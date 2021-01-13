@@ -7,18 +7,18 @@
     <title>Vite App</title>
     <script>
       if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        document.querySelector("html").classList.add("dark");
+        document.querySelector('html').classList.add('dark');
       } else {
-        document.querySelector("html").classList.remove("dark");
+        document.querySelector('html').classList.remove('dark');
       }
     </script>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

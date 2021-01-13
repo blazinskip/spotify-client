@@ -25,10 +25,10 @@
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import useState from '../use/use-state';
 import TheMediaControls from '../components/TheMediaControls.vue';
 import TheSidebar from '../components/TheSidebar.vue';
 import TheTopBar from '../components/TheTopBar.vue';
+import useState from '../use/use-state';
 
 export default defineComponent({
   components: { TheSidebar, TheTopBar, TheMediaControls },
