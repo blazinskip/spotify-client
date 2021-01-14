@@ -33,13 +33,23 @@
 </template>
 
 <script lang="ts">
+import { onMounted } from 'vue';
 import PlaylistCard from '../components/PlaylistCard.vue';
 import { genres } from '../data';
+import useState from '../use/use-state';
 
 export default {
   components: { PlaylistCard },
   name: 'HomePage',
   setup() {
+    const {state, token } = useState();
+    onMounted(async () => {
+      const recentlyPlayed = await fetch(
+        'https://api.spotify.com/v1/me/player/recently-played',
+        { headers: { Authorization: token.value } }
+      );
+    });
+
     return {
       genres,
     };
