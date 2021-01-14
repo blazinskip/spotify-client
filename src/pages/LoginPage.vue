@@ -27,7 +27,7 @@
 import { defineComponent } from 'vue';
 
 const clientId = 'f67aadc0bde24f30b2276b9d08f3665b';
-const redirectUri = `${location.origin}/login-success/`;
+const redirectUri = `${location.origin}/`;
 const scopes = [
   'playlist-read-private',
   'streaming',

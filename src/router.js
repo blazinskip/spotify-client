@@ -23,11 +23,11 @@ const routes = [
     ],
   },
   { path: '/login', component: LoginPage },
-  { path: '/login-success', component: LoginSuccessPage },
+  { path: '/:pathMatch(.*)*', component: LoginSuccessPage },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 
