@@ -16,7 +16,8 @@ export default defineComponent({
     watch(state, (newValue, oldValue) => console.log({ newValue, oldValue }));
 
     onMounted(() => {
-      const values = route.hash.replace('#', '').split('&');
+      // TODO: these is not valid but it works
+      const values = location.hash.replace('#/', '').split('&');
       const params: { [key: string]: string } = values.reduce(
         (acc, current) => {
           const [key, value] = current.split('=');
