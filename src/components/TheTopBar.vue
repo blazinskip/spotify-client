@@ -67,7 +67,9 @@
               </svg>
             </div>
           </figure>
-          <span class="flex px-2">blazinskip</span>
+          <span v-if="user" class="flex px-2"
+            >{{user.display_name}}</span
+          >
         </button>
       </div>
     </div>
@@ -75,10 +77,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref, watch } from 'vue';
+import { useFetch } from 'vue-composable';
+import { User } from '../types';
+import useState from '../use/use-state';
 
 export default defineComponent({
   name: 'TheTopBar',
-  setup() {},
+  setup() {
+    const user = ref<User | null>(null);
+    const { token } = useState();
+
+    onMounted(async () => {
+      if (token) {
+        const result = await fetch(
+          'https://api.spotify.com/v1/me',
+          {
+            headers: new Headers({ Authorization: token.value }),
+          }
+        );
+
+          user.value = await result.json();
+      }
+    });
+
+    return {
+      user,
+    };
+  },
 });
 </script>

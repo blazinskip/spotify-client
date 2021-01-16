@@ -43,12 +43,6 @@ export default {
   name: 'HomePage',
   setup() {
     const {state, token } = useState();
-    onMounted(async () => {
-      const recentlyPlayed = await fetch(
-        'https://api.spotify.com/v1/me/player/recently-played',
-        { headers: { Authorization: token.value } }
-      );
-    });
 
     return {
       genres,
