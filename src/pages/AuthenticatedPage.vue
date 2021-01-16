@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-screen">
+  <div class="flex flex-col w-full h-screen" v-if="state.authenticated">
     <div class="flex flex-1">
       <aside
         style="width: 232px"
@@ -42,7 +42,7 @@ export default defineComponent({
       }
     });
 
-    return {};
+    return {state};
   },
 });
 </script>
