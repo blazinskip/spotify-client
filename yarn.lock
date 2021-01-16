@@ -243,6 +243,11 @@
     "@vue/compiler-dom" "3.0.5"
     "@vue/shared" "3.0.5"
 
+"@vue/devtools-api@^6.0.0-beta.3":
+  version "6.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.3.tgz#5a66cc8beed688fe18c272ee7a8bd8ed7e35a54c"
+  integrity sha512-iJQhVyWzWIJxYIMjbZpljZQfU4gL2IMD5YQm3HXO8tQRU7RqqnD3f1WHn+vrqvrSvM8Qw2BeNugwdBBmbK8Oxg==
+
 "@vue/reactivity@3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.5.tgz#e3789e4d523d845f9ae0b4d770e2b45594742fd2"
@@ -2082,6 +2087,13 @@ vite@2.0.0-beta.27:
     rollup "^2.35.1"
   optionalDependencies:
     fsevents "~2.1.2"
+
+vue-composable@^1.0.0-beta.15:
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/vue-composable/-/vue-composable-1.0.0-beta.15.tgz#0db548bc204c51109363dbdbf8aa44bbdc5ac14e"
+  integrity sha512-gCcYK8z6VRIWwfNb6KFiPWCXnHZ2oezw50CwyFG+AZhYjXeBGClAvAiEsjiF6OSA+Sd9yelqthyHBUzJiRzZVA==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.3"
 
 vue-eslint-parser@^7.3.0:
   version "7.3.0"
