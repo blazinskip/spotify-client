@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { State } from '../types';
+import { State, User } from '../types';
 
 type TokenInfo = {
   token: string;
@@ -8,6 +8,7 @@ type TokenInfo = {
 };
 
 const state = ref<State>({
+  user: null,
   tokenInfo: null,
   authenticated: false,
 });
@@ -25,8 +26,13 @@ function authenticate({ token, type, expiresIn }: TokenInfo): void {
   };
 }
 
+function updateUser(user: null | User): void {
+  state.value = { ...state.value, user };
+}
+
 export default () => ({
   state: state.value,
   token: tokenString,
   authenticate,
+  updateUser,
 });

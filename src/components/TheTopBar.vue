@@ -86,7 +86,7 @@ export default defineComponent({
   name: 'TheTopBar',
   setup() {
     const user = ref<User | null>(null);
-    const { token } = useState();
+    const { token, updateUser } = useState();
 
     onMounted(async () => {
       if (token) {
@@ -98,6 +98,7 @@ export default defineComponent({
         );
 
           user.value = await result.json();
+          updateUser(user.value);
       }
     });
 

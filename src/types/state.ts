@@ -1,3 +1,5 @@
+import { User } from './user';
+
 type TokenInfo = {
   token: string;
   type: string;
@@ -5,6 +7,7 @@ type TokenInfo = {
 };
 
 export interface State {
+  user: null | User;
   tokenInfo: null | TokenInfo;
   authenticated: boolean;
 }
