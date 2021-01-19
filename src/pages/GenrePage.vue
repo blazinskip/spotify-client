@@ -1,63 +1,57 @@
 <template>
   <section class="flex flex-col px-8 py-4">
     <header class="flex items-center justify-between mb-4">
-      <h2 class="text-2xl font-bold text-gray-50">
-        {{ suggestion.name }}
-      </h2>
+      <h2 class="text-2xl font-bold text-gray-50">Recently Played</h2>
     </header>
     <div
+      v-if="recentlyPlayed"
       class="grid gap-6"
       style="
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         grid-template-rows: auto;
       "
     >
-      <playlist-card
-        v-for="playlist in suggestion.playlists"
-        :key="playlist.id"
-        :playlist="playlist"
+      <track-album-card
+        v-for="item in recentlyPlayed.items"
+        :key="item.track.album.id"
+        :track="item.track"
       >
-      </playlist-card>
+      </track-album-card>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import PlaylistCard from '../components/PlaylistCard.vue';
+import { onMounted, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import TrackAlbumCard from '../components/TrackAlbumCard.vue';
+import { ResultItem } from '../types';
+import useState from '../use/use-state';
 
 export default {
-  components: { PlaylistCard },
+  components: { TrackAlbumCard },
   name: 'GenrePage',
   setup() {
-    const suggestion = {
-      id: new Date().getTime(),
-      name: 'Shortcuts',
-      playlists: [
-        {
-          id: new Date().getTime(),
-          title: 'Rock Classic',
-          descritpion:
-            'Rock legends and epic songs that continue to inspire generations.',
-          thumbnailUrl:
-            'https://i.scdn.co/image/ab67706f00000003519fc8771d90f496501a4da3',
-        },
-        {
-          id: new Date().getTime(),
-          title: 'Christmas Hits',
-          descritpion: 'The biggest Christmas songs of all time.',
-          thumbnailUrl:
-            'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
-        },
-        ...Array.from({ length: 10 }, (x, i) => ({
-          id: new Date().getTime(),
-          title: `Hits ${i + 1}`,
-          descritpion: `Descriptions ${i + 1}`,
-          thumbnailUrl:
-            'https://i.scdn.co/image/ab67706f00000002f04cbd323e0edd1b19ef58bb',
-        })),
-      ],
-    };
-    return { suggestion };
+    const route = useRoute();
+    const { state, token } = useState();
+    const recentlyPlayed = ref<ResultItem | null>(null);
+
+    if (route.params.genreName === 'recently-played') {
+      onMounted(async () => {
+        if (token) {
+          const result = await fetch(
+            'https://api.spotify.com/v1/me/player/recently-played',
+            {
+              headers: new Headers({ Authorization: token.value }),
+            }
+          );
+
+          recentlyPlayed.value = await result.json();
+        }
+      });
+    }
+
+    return { recentlyPlayed };
   },
 };
 </script>

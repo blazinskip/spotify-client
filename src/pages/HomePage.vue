@@ -1,20 +1,21 @@
 <template>
   <div class="grid grid-flow-row gap-8 px-8 py-4">
-    <section v-for="genre in genres" :key="genre.id">
+    <section>
       <header class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold text-gray-50">
-          <router-link to="'/genre/' + genre.id">
-            {{ genre.name }}
+          <router-link to="/genre/recently-played">
+            Recently Played
           </router-link>
         </h2>
 
         <router-link
           class="text-sm font-semibold text-gray-400 uppercase transition hover:text-gray-50"
-          :to="'/genre/' + genre.id"
+          :to="'/genre/recently-played'"
           >See all</router-link
         >
       </header>
       <div
+        v-if="recentlyPlayed"
         class="grid overflow-y-hidden gap-x-6"
         style="
           grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -22,30 +23,45 @@
           grid-template-rows: 1fr;
         "
       >
-        <playlist-card
-          v-for="playlist in genre.playlists"
-          :key="playlist.id"
-          :playlist="playlist"
-        ></playlist-card>
+        <track-album-card
+          v-for="item in recentlyPlayed.items"
+          :key="item.track.id"
+          :track="item.track"
+        ></track-album-card>
       </div>
     </section>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted } from 'vue';
-import PlaylistCard from '../components/PlaylistCard.vue';
+import { onMounted, ref } from 'vue';
 import { genres } from '../data';
 import useState from '../use/use-state';
+import { ResultItem } from '../types';
+import TrackAlbumCard from '../components/TrackAlbumCard.vue';
 
 export default {
-  components: { PlaylistCard },
+  components: { TrackAlbumCard },
   name: 'HomePage',
   setup() {
-    const {state, token } = useState();
+    const recentlyPlayed = ref<ResultItem | null>(null);
+    const { state, token } = useState();
+
+    onMounted(async () => {
+      if (token) {
+        const result = await fetch(
+          'https://api.spotify.com/v1/me/player/recently-played',
+          {
+            headers: new Headers({ Authorization: token.value }),
+          }
+        );
+
+        recentlyPlayed.value = await result.json();
+      }
+    });
 
     return {
-      genres,
+      recentlyPlayed,
     };
   },
 };
