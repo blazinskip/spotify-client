@@ -97,7 +97,7 @@
         <div class="relative flex-1 w-24 h-1 bg-gray-600 rounded">
           <div
             class="absolute w-1/3 h-1 transition bg-gray-300 rounded group-hover:bg-green-400"
-          ></div>
+          />
         </div>
         <span class="flex-shrink-0">48:54</span>
       </div>
@@ -154,7 +154,7 @@
         <div class="relative w-24 h-1 bg-gray-600 rounded">
           <div
             class="absolute w-1/3 h-1 transition bg-gray-300 rounded group-hover:bg-green-400"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -162,20 +162,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+  import { defineComponent, ref } from 'vue';
 
-export default defineComponent({
-  name: 'TheMediaControls',
-  setup() {
-    const playlists = ref([
-      'Check lins',
-      'Your Top Songs 2020',
-      'Muzyka do pracy',
-    ]);
+  export default defineComponent({
+    name: 'TheMediaControls',
+    setup() {
+      const playlists = ref([
+        'Check lins',
+        'Your Top Songs 2020',
+        'Muzyka do pracy',
+      ]);
 
-    return {
-      playlists,
-    };
-  },
-});
+      return {
+        playlists,
+      };
+    },
+  });
 </script>

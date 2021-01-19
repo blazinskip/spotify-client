@@ -3,8 +3,7 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: 'LibraryPage',
-  setup() {},
-};
+  export default {
+    name: 'LibraryPage',
+  };
 </script>

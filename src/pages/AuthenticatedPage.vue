@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-screen" v-if="state.authenticated">
+  <div v-if="state.authenticated" class="flex flex-col w-full h-screen">
     <div class="flex flex-1">
       <aside
         style="width: 232px"
@@ -11,7 +11,7 @@
         <main class="flex flex-col flex-1 h-0 bg-gray-100 dark:bg-gray-900">
           <the-top-bar />
           <div class="overflow-auto">
-            <router-view></router-view>
+            <router-view />
           </div>
         </main>
       </div>
@@ -23,26 +23,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import TheMediaControls from '../components/TheMediaControls.vue';
-import TheSidebar from '../components/TheSidebar.vue';
-import TheTopBar from '../components/TheTopBar.vue';
-import useState from '../use/use-state';
+  import { defineComponent, onMounted } from 'vue';
+  import { useRouter } from 'vue-router';
+  import TheMediaControls from '../components/TheMediaControls.vue';
+  import TheSidebar from '../components/TheSidebar.vue';
+  import TheTopBar from '../components/TheTopBar.vue';
+  import useState from '../use/use-state';
 
-export default defineComponent({
-  components: { TheSidebar, TheTopBar, TheMediaControls },
-  name: 'TheAuthenticated',
-  setup() {
-    const router = useRouter();
-    const { state } = useState();
-    onMounted(() => {
-      if (!state.authenticated) {
-        router.push({ path: '/login' });
-      }
-    });
+  export default defineComponent({
+    name: 'TheAuthenticated',
+    components: { TheSidebar, TheTopBar, TheMediaControls },
+    setup() {
+      const router = useRouter();
+      const { state } = useState();
+      onMounted(() => {
+        if (!state.authenticated) {
+          router.push({ path: '/login' });
+        }
+      });
 
-    return {state};
-  },
-});
+      return { state };
+    },
+  });
 </script>

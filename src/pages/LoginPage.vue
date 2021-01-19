@@ -24,46 +24,46 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
 
-const clientId = 'f67aadc0bde24f30b2276b9d08f3665b';
-const redirectUri = `${location.origin}/#/login-success/`;
-const scopes = [
-  'playlist-read-private',
-  'streaming',
-  'user-read-email',
-  'user-read-private',
-  'user-read-currently-playing',
-  'user-read-playback-state',
-  'user-read-recently-played',
-  'user-modify-playback-state',
-];
+  const clientId = 'f67aadc0bde24f30b2276b9d08f3665b';
+  const redirectUri = `${location.origin}/#/login-success/`;
+  const scopes = [
+    'playlist-read-private',
+    'streaming',
+    'user-read-email',
+    'user-read-private',
+    'user-read-currently-playing',
+    'user-read-playback-state',
+    'user-read-recently-played',
+    'user-modify-playback-state',
+  ];
 
-const href = `${'https://accounts.spotify.com/authorize?response_type=token&client_id='}${clientId}${
-  scopes ? `&scope=${encodeURIComponent(scopes.join(' '))}` : ''
-}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+  const href = `${'https://accounts.spotify.com/authorize?response_type=token&client_id='}${clientId}${
+    scopes ? `&scope=${encodeURIComponent(scopes.join(' '))}` : ''
+  }&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
-export default defineComponent({
-  name: 'LoginPage',
-  setup() {
-    return { href };
-  },
-});
+  export default defineComponent({
+    name: 'LoginPage',
+    setup() {
+      return { href };
+    },
+  });
 </script>
 <style scoped>
-.background {
-  background: url(https://images.unsplash.com/photo-1511719218143-933ef7b27efa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=100)
-    no-repeat center center fixed;
-  background-size: cover;
-}
-.background:before {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(20px); /* apply the blur */
-  pointer-events: none; /* make the pseudo class click-through */
-  filter: brightness(50%);
-}
+  .background {
+    background: url(https://images.unsplash.com/photo-1511719218143-933ef7b27efa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=100)
+      no-repeat center center fixed;
+    background-size: cover;
+  }
+  .background:before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px); /* apply the blur */
+    pointer-events: none; /* make the pseudo class click-through */
+    filter: brightness(50%);
+  }
 </style>

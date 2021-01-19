@@ -1,6 +1,5 @@
 import { Genre } from './types';
 
-// eslint-disable-next-line import/prefer-default-export
 export const genres: Genre[] = [
   {
     id: new Date().getTime(),

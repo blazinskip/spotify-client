@@ -6,7 +6,7 @@
     >
       <div
         class="absolute inset-0 transition-colors duration-300 ease-in-out rounded hover:bg-white hover:bg-opacity-10"
-      ></div>
+      />
       <div class="relative pointer-events-none">
         <img class="mb-4 rounded" :src="track.album.images[1].url" alt="" />
         <button
@@ -26,7 +26,10 @@
         </button>
       </div>
       <div class="flex flex-col" style="min-height: 64px">
-        <h3 class="overflow-hidden text-base font-bold whitespace-nowrap text-gray-50 overflow-ellipsis" :title="track.album.name">
+        <h3
+          class="overflow-hidden text-base font-bold whitespace-nowrap text-gray-50 overflow-ellipsis"
+          :title="track.album.name"
+        >
           {{ track.name }}
         </h3>
         <div
@@ -45,15 +48,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { Playlist, ResultItem, Track } from '../types';
+  import { defineComponent, PropType } from 'vue';
+  import { Track } from '../types';
 
-export default defineComponent({
-  name: 'TrackAlbumCard',
-  props: {
-    track: {
-      type: Object as PropType<Track>,
+  export default defineComponent({
+    name: 'TrackAlbumCard',
+    props: {
+      track: {
+        type: Object as PropType<Track>,
+        default: null,
+      },
     },
-  },
-});
+  });
 </script>

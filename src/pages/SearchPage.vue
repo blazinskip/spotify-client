@@ -3,8 +3,7 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: 'SearchPage',
-  setup() {},
-};
+  export default {
+    name: 'SearchPage',
+  };
 </script>

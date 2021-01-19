@@ -15,43 +15,42 @@
         v-for="item in recentlyPlayed.items"
         :key="item.track.album.id"
         :track="item.track"
-      >
-      </track-album-card>
+      />
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import TrackAlbumCard from '../components/TrackAlbumCard.vue';
-import { ResultItem } from '../types';
-import useState from '../use/use-state';
+  import { onMounted, ref } from 'vue';
+  import { useRoute } from 'vue-router';
+  import TrackAlbumCard from '../components/TrackAlbumCard.vue';
+  import { ResultItem } from '../types';
+  import useState from '../use/use-state';
 
-export default {
-  components: { TrackAlbumCard },
-  name: 'GenrePage',
-  setup() {
-    const route = useRoute();
-    const { state, token } = useState();
-    const recentlyPlayed = ref<ResultItem | null>(null);
+  export default {
+    name: 'GenrePage',
+    components: { TrackAlbumCard },
+    setup() {
+      const route = useRoute();
+      const { token } = useState();
+      const recentlyPlayed = ref<ResultItem | null>(null);
 
-    if (route.params.genreName === 'recently-played') {
-      onMounted(async () => {
-        if (token) {
-          const result = await fetch(
-            'https://api.spotify.com/v1/me/player/recently-played',
-            {
-              headers: new Headers({ Authorization: token.value }),
-            }
-          );
+      if (route.params.genreName === 'recently-played') {
+        onMounted(async () => {
+          if (token) {
+            const result = await fetch(
+              'https://api.spotify.com/v1/me/player/recently-played',
+              {
+                headers: new Headers({ Authorization: token.value }),
+              }
+            );
 
-          recentlyPlayed.value = await result.json();
-        }
-      });
-    }
+            recentlyPlayed.value = await result.json();
+          }
+        });
+      }
 
-    return { recentlyPlayed };
-  },
-};
+      return { recentlyPlayed };
+    },
+  };
 </script>
