@@ -4,9 +4,7 @@
   >
     <div class="flex items-center h-full px-8">
       <div class="flex space-x-4">
-        <button
-          class="w-8 h-8 p-1 text-gray-400 bg-black rounded-full cursor-not-allowed bg-opacity-40"
-        >
+        <the-top-bar-navigation-button :disabled="true" :on-click="onClick">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -20,10 +18,8 @@
               d="M15 19l-7-7 7-7"
             />
           </svg>
-        </button>
-        <button
-          class="w-8 h-8 p-1 bg-black rounded-full cursor-not-allowed text-gray-50"
-        >
+        </the-top-bar-navigation-button>
+        <the-top-bar-navigation-button :on-click="onClick">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -37,9 +33,11 @@
               d="M9 5l7 7-7 7"
             />
           </svg>
-        </button>
+        </the-top-bar-navigation-button>
       </div>
+
       <div class="flex-grow" />
+
       <div>
         <button
           class="flex items-center p-1 text-sm font-bold bg-black rounded-full h-9 text-gray-50 bg-opacity-70 hover:bg-gray-800"
@@ -78,9 +76,11 @@
   import { defineComponent, onMounted, ref } from 'vue';
   import { User } from '../types';
   import useState from '../use/use-state';
+  import TheTopBarNavigationButton from './TheTopBarNavigationButton.vue';
 
   export default defineComponent({
     name: 'TheTopBar',
+    components: { TheTopBarNavigationButton },
     setup() {
       const user = ref<User | null>(null);
       const { token, updateUser } = useState();
@@ -98,6 +98,7 @@
 
       return {
         user,
+        onClick: () => console.log('clicked'),
       };
     },
   });
