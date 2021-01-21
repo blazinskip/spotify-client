@@ -1,5 +1,5 @@
 export * from './genre';
 export * from './user';
-export * from './playlist';
+export * from './page';
 export * from './spotify';
 export * from './state';

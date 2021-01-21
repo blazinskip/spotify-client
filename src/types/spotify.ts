@@ -74,3 +74,28 @@ export interface Result {
   limit: number;
   href: string;
 }
+
+export interface Playlist {
+  collaborative: boolean;
+  external_urls: ExternalUrls;
+  href: string;
+  id: string;
+  images: any[];
+  name: string;
+  owner: Owner;
+  public: boolean;
+  snapshot_id: string;
+  tracks: PlaylistTrack;
+  type: string;
+  uri: string;
+}
+
+export interface Owner {
+  external_urls: ExternalUrls;
+  href: string;
+  id: string;
+  type: string;
+  uri: string;
+}
+
+type PlaylistTrack = any;
