@@ -19,88 +19,90 @@
         </svg>
       </router-link>
     </div>
-    <nav class="flex flex-col px-2">
-      <router-link
-        :to="'/'"
-        class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
-        :class="{
-          'text-gray-400': !isActive('/'),
-          'text-gray-50': isActive('/'),
-        }"
-        exact-active-class="bg-gray-50 bg-opacity-20 text-gray-50"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 mr-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+    <nav class="flex flex-col">
+      <div class="px-2">
+        <router-link
+          :to="'/'"
+          class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+          :class="{
+            'text-gray-400': !isActive('/'),
+            'text-gray-50': isActive('/'),
+          }"
+          exact-active-class="bg-gray-50 bg-opacity-20 text-gray-50"
         >
-          <path
-            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-          />
-        </svg>
-        <span>Home</span>
-      </router-link>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+            />
+          </svg>
+          <span>Home</span>
+        </router-link>
 
-      <router-link
-        :to="'/search'"
-        class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
-        :class="{
-          'text-gray-400': !isActive('/search'),
-          'text-gray-50': isActive('/search'),
-        }"
-        active-class="bg-gray-50 bg-opacity-20 text-gray-50"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 mr-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <router-link
+          :to="'/search'"
+          class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+          :class="{
+            'text-gray-400': !isActive('/search'),
+            'text-gray-50': isActive('/search'),
+          }"
+          active-class="bg-gray-50 bg-opacity-20 text-gray-50"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-        <span>Search</span>
-      </router-link>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <span>Search</span>
+        </router-link>
 
-      <router-link
-        :to="'/library'"
-        class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
-        :class="{
-          'text-gray-400': !isActive('/library'),
-          'text-gray-50': isActive('/library'),
-        }"
-        active-class="bg-gray-50 bg-opacity-20 text-gray-50"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 mr-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <router-link
+          :to="'/library'"
+          class="flex px-5 py-2 font-semibold transition rounded hover:text-gray-50"
+          :class="{
+            'text-gray-400': !isActive('/library'),
+            'text-gray-50': isActive('/library'),
+          }"
+          active-class="bg-gray-50 bg-opacity-20 text-gray-50"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 10h16M4 14h16M4 18h16"
-          />
-        </svg>
-        <span>Your Library</span>
-      </router-link>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 10h16M4 14h16M4 18h16"
+            />
+          </svg>
+          <span>Your Library</span>
+        </router-link>
+      </div>
 
-      <span class="px-5 pt-6 text-sm font-semibold text-gray-400 uppercase"
-        >Playlist</span
+      <span class="px-6 pt-6 mb-3 text-xs font-bold text-gray-400 uppercase"
+        >Playlists</span
       >
 
-      <div class="flex flex-col pt-4 space-y-2.5">
+      <div class="flex flex-col space-y-2.5">
         <a
-          class="flex items-center px-5 transition opacity-70 hover:opacity-100"
+          class="flex items-center px-6 py-1 transition opacity-70 hover:opacity-100"
           href=""
         >
           <span class="flex p-1.5 mr-4 text-gray-600 bg-white">
@@ -126,7 +128,7 @@
 
         <a
           href=""
-          class="flex items-center px-5 transition opacity-70 hover:opacity-100"
+          class="flex items-center px-6 transition opacity-70 hover:opacity-100"
         >
           <span class="mr-4 p-1.5 bg-purple-400">
             <svg
@@ -149,12 +151,16 @@
 
       <hr class="mx-5 mt-4 mb-4 border-gray-800" />
 
-      <ul>
-        <li v-for="(playlist, index) in playlists" :key="`playlist-${index}`">
-          <a
-            class="flex px-5 py-1 text-sm font-semibold text-gray-400 transition rounded hover:text-gray-50"
-            href=""
-            >{{ playlist }}</a
+      <ul v-if="playlistPage">
+        <li
+          v-for="(playlist, index) in playlistPage.items"
+          :key="`playlist-${index}`"
+          class="block"
+        >
+          <router-link
+            :to="'/playlist/' + playlist.id"
+            class="block h-8 px-6 overflow-hidden text-sm font-semibold text-gray-400 transition rounded cursor-pointer overflow-ellipsis hover:text-gray-50 whitespace-nowrap"
+            >{{ playlist.name }}</router-link
           >
         </li>
       </ul>
@@ -164,7 +170,10 @@
 
 <script lang="ts">
   import { useRouter } from 'vue-router';
-  import { computed, defineComponent, ref } from 'vue';
+  import { computed, defineComponent, onMounted, ref } from 'vue';
+  import useState from '../use/use-state';
+  import { Playlist } from '../types/spotify';
+  import { Page } from '../types';
 
   export default defineComponent({
     name: 'TheSidebar',
@@ -176,15 +185,24 @@
       const router = useRouter();
       const activeRoute = computed(() => router.currentRoute.value.path);
       const isActive = (path: string) => path === activeRoute.value;
+      const { token } = useState();
+      const playlistPage = ref<Page<Playlist> | null>(null);
 
-      const playlists = ref([
-        'Check lins',
-        'Your Top Songs 2020',
-        'Muzyka do pracy',
-      ]);
+      onMounted(async () => {
+        if (token) {
+          const result = await fetch(
+            'https://api.spotify.com/v1/me/playlists',
+            {
+              headers: new Headers({ Authorization: token.value }),
+            }
+          );
+
+          playlistPage.value = await result.json();
+        }
+      });
 
       return {
-        playlists,
+        playlistPage,
         isActive,
         routes,
       };
