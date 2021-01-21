@@ -27,7 +27,7 @@
           'text-gray-400': !isActive('/'),
           'text-gray-50': isActive('/'),
         }"
-        active-class="bg-gray-50 bg-opacity-20 text-gray-50"
+        exact-active-class="bg-gray-50 bg-opacity-20 text-gray-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -175,7 +175,7 @@
       ];
       const router = useRouter();
       const activeRoute = computed(() => router.currentRoute.value.path);
-      const isActive = (path) => path === activeRoute.value;
+      const isActive = (path: string) => path === activeRoute.value;
 
       const playlists = ref([
         'Check lins',
