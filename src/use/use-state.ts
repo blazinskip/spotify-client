@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue';
-import { State, User } from '../types';
+import { Playlist, State, User } from '../types';
 
 type TokenInfo = {
   token: string;
@@ -11,6 +11,7 @@ const state = ref<State>({
   user: null,
   tokenInfo: null,
   authenticated: false,
+  playlists: [],
 });
 
 const tokenString = computed(() => {
@@ -30,9 +31,14 @@ function updateUser(user: null | User): void {
   state.value = { ...state.value, user };
 }
 
+function updateUserPlaylists(playlists: Playlist[]): void {
+  state.value = { ...state.value, playlists };
+}
+
 export default () => ({
   state: state.value,
   token: tokenString,
   authenticate,
   updateUser,
+  updateUserPlaylists,
 });

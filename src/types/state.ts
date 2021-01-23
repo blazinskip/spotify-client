@@ -1,3 +1,4 @@
+import { Playlist } from './spotify';
 import { User } from './user';
 
 type TokenInfo = {
@@ -10,4 +11,5 @@ export interface State {
   user: null | User;
   tokenInfo: null | TokenInfo;
   authenticated: boolean;
+  playlists: Playlist[];
 }
