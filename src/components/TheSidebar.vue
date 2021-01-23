@@ -173,7 +173,8 @@
   import { computed, defineComponent, onMounted, ref } from 'vue';
   import useState from '../use/use-state';
   import { Playlist } from '../types/spotify';
-  import { Page } from '../types';
+  import { HTTPStatusCode, Page } from '../types';
+  import { apiRequest } from '../utils';
 
   export default defineComponent({
     name: 'TheSidebar',
@@ -185,19 +186,19 @@
       const router = useRouter();
       const activeRoute = computed(() => router.currentRoute.value.path);
       const isActive = (path: string) => path === activeRoute.value;
-      const { token } = useState();
+      const { token, updateUserPlaylists } = useState();
       const playlistPage = ref<Page<Playlist> | null>(null);
 
       onMounted(async () => {
         if (token) {
-          const result = await fetch(
-            'https://api.spotify.com/v1/me/playlists',
-            {
-              headers: new Headers({ Authorization: token.value }),
-            }
+          const { result, status } = await apiRequest<Page<Playlist>>(
+            'https://api.spotify.com/v1/me/playlists'
           );
 
-          playlistPage.value = await result.json();
+          if (status === HTTPStatusCode.OK) {
+            playlistPage.value = result;
+            updateUserPlaylists(result?.items ?? []);
+          }
         }
       });
 
