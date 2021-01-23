@@ -1,4 +1,3 @@
-export * from './genre';
 export * from './http-status';
 export * from './user';
 export * from './page';
