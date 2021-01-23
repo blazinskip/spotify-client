@@ -37,26 +37,26 @@
 <script lang="ts">
   import { onMounted, ref } from 'vue';
   import useState from '../use/use-state';
-  import { ResultItem } from '../types';
+  import { HTTPStatusCode, ResultItem } from '../types';
   import TrackAlbumCard from '../components/TrackAlbumCard.vue';
+  import { apiRequest } from '../utils';
 
   export default {
     name: 'HomePage',
     components: { TrackAlbumCard },
     setup() {
       const recentlyPlayed = ref<ResultItem | null>(null);
-      const { state, token } = useState();
+      const { token } = useState();
 
       onMounted(async () => {
         if (token) {
-          const result = await fetch(
-            'https://api.spotify.com/v1/me/player/recently-played',
-            {
-              headers: new Headers({ Authorization: token.value }),
-            }
+          const { result, status } = await apiRequest<ResultItem>(
+            'https://api.spotify.com/v1/me/player/recently-played'
           );
 
-          recentlyPlayed.value = await result.json();
+          if (status === HTTPStatusCode.OK) {
+            recentlyPlayed.value = result;
+          }
         }
       });
 
