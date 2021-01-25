@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import HomePage from './pages/HomePage.vue';
-import SearchPage from './pages/SearchPage.vue';
-import LibraryPage from './pages/LibraryPage.vue';
-import GenrePage from './pages/GenrePage.vue';
-import LoginPage from './pages/LoginPage.vue';
-import AuthenticatedPage from './pages/AuthenticatedPage.vue';
-import LoginSuccessPage from './pages/LoginSuccessPage.vue';
-import PlaylistPage from './pages/PlaylistPage.vue';
+import HomePage from './views/HomePage.vue';
+import SearchPage from './views/SearchPage.vue';
+import LibraryPage from './views/LibraryPage.vue';
+import GenrePage from './views/GenrePage.vue';
+import LoginPage from './views/LoginPage.vue';
+import AuthenticatedPage from './views/AuthenticatedPage.vue';
+import LoginSuccessPage from './views/LoginSuccessPage.vue';
+import Playlist from './views/Playlist.vue';
 
 const routes = [
   {
@@ -16,7 +16,7 @@ const routes = [
       { path: '/', component: HomePage },
       { path: '/search', component: SearchPage },
       { path: '/library', component: LibraryPage },
-      { path: '/playlist/:playlistId', component: PlaylistPage },
+      { path: '/playlist/:playlistId', component: Playlist },
       { path: '/genre/:genreName', component: GenrePage },
     ],
   },
