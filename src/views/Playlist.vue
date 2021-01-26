@@ -1,24 +1,20 @@
 <template>
-  <div v-if="playlist" class="px-8 py-6">
-    <div style="max-height: 500px; min-height: 340px; height: 30vh"></div>
-  </div>
+  <div v-if="playlist" class="px-8 py-6"></div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue';
+  import { defineComponent, onMounted, ref, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import { HTTPStatusCode, Playlist } from '../types';
-  import useState from '../use/use-state';
   import { apiRequest } from '../utils';
 
   export default defineComponent({
     name: 'Playlist',
     setup() {
       const route = useRoute();
-      const { token } = useState();
       const playlist = ref<Playlist | null>(null);
-      onMounted(async () => {
-        if (token && route.params.playlistId) {
+      const fetchPlaylist = async () => {
+        if (route.params.playlistId) {
           const { result, status } = await apiRequest<Playlist>(
             `https://api.spotify.com/v1/playlists/${route.params.playlistId}`
           );
@@ -27,7 +23,10 @@
             playlist.value = result;
           }
         }
-      });
+      };
+
+      onMounted(fetchPlaylist);
+      watch(() => route.params, fetchPlaylist);
 
       return { route, playlist };
     },
