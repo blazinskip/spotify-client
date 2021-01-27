@@ -1,7 +1,7 @@
 <template>
   <div v-if="playlist" class="pt-1 -mt-16">
     <playlist-header :playlist="playlist"></playlist-header>
-    <playlist-tracks>
+    <playlist-tracks :playlist="playlist" class="px-8">
       <template #tracks>
         <playlist-track
           v-for="item in playlist.tracks.items"
