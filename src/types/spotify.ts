@@ -1,3 +1,5 @@
+import { Page } from './page';
+
 export interface ExternalUrls {
   spotify: string;
 }
@@ -85,7 +87,7 @@ export interface Playlist {
   owner: Owner;
   public: boolean;
   snapshot_id: string;
-  tracks: PlaylistTrack;
+  tracks: Page<PlaylistTrack>;
   type: string;
   uri: string;
 }
@@ -98,4 +100,7 @@ export interface Owner {
   uri: string;
 }
 
-export type PlaylistTrack = any;
+export interface PlaylistTrack {
+  added_at: Date;
+  track: Track;
+}
