@@ -1,6 +1,15 @@
 <template>
   <div v-if="playlist" class="pt-1 -mt-16">
     <playlist-header :playlist="playlist"></playlist-header>
+    <playlist-tracks>
+      <template #tracks>
+        <playlist-track
+          v-for="item in playlist.tracks.items"
+          :key="item.track.id"
+          :track="item.track"
+        ></playlist-track>
+      </template>
+    </playlist-tracks>
   </div>
 </template>
 
@@ -8,12 +17,14 @@
   import { defineComponent, onMounted, ref, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import PlaylistHeader from '../components/PlaylistHeader.vue';
+  import PlaylistTrack from '../components/PlaylistTrack.vue';
+  import PlaylistTracks from '../components/PlaylistTracks.vue';
   import { HTTPStatusCode, Playlist } from '../types';
   import { apiRequest } from '../utils';
 
   export default defineComponent({
     name: 'Playlist',
-    components: { PlaylistHeader },
+    components: { PlaylistHeader, PlaylistTracks, PlaylistTrack },
     setup() {
       const route = useRoute();
       const playlist = ref<Playlist | null>(null);

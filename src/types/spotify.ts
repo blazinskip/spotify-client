@@ -98,4 +98,4 @@ export interface Owner {
   uri: string;
 }
 
-type PlaylistTrack = any;
+export type PlaylistTrack = any;
