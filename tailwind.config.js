@@ -17,6 +17,10 @@ module.exports = {
       scale: {
         '-1': '-1',
       },
+      gridTemplateColumns: {
+        playlist:
+          '[index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr)',
+      },
     },
   },
   variants: {
